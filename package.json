@@ -1,7 +1,7 @@
 {
   "name": "full-stack-change",
   "version": "1.0.0",
-  "description": "Build a full stack web application using React, Node.js, Express and Webpack.",
+  "description": "Build a full stack web application using React, Node.js, Express.",
   "main": "src/server/index.js",
   "scripts": {
     "build": "webpack --mode production",
@@ -10,8 +10,6 @@
     "server": "nodemon src/server/index.js",
     "dev": "concurrently \"npm run server\" \"npm run client\""
   },
-  "author": "Philip Song",
-  "license": "ISC",
   "dependencies": {
     "babel-polyfill": "^6.26.0",
     "express": "^4.16.3",
