@@ -11,7 +11,7 @@ const Result = (props) => {
     <Container>
         <Row>
           <Col xs={3}></Col>
-          <Col xs={6}>{medianPrimes ? <span>{`Median Primes under ${num} : ${medianPrimes}`}</span> : <span>Median Primes will dispaly here!</span>}</Col>
+          <Col xs={6} className="final_res">{medianPrimes ? <span>{`Median Primes under ${num} : ${medianPrimes}`}</span> : <span>Median Primes will dispaly here!</span>}</Col>
           <Col xs={3}></Col>
         </Row>
     </Container>
@@ -19,8 +19,16 @@ const Result = (props) => {
 };
 
 Result.propTypes = {
-  num: PropTypes.number.isRequired,
-  medianPrimes: PropTypes.array.isRequired
+  num: PropTypes.string,
+  medianPrimes: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.array
+  ])
 };
+
+Result.defaultProps = {
+  heading: '',
+  medianPrimes: null
+}
 
 export default Result;

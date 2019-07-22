@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Button, Form, Container, Col, Row } from 'react-bootstrap';
-import Header from './components/Header';
-import Result from './components/Result';
+import Header from '../components/Header';
+import Result from '../components/Result';
 import bffClient from '../apis/bffClient';
 
 export default class Home extends Component {  
