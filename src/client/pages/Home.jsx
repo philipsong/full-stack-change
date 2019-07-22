@@ -3,6 +3,7 @@ import { Button, Form, Container, Col, Row } from 'react-bootstrap';
 import Header from '../components/Header';
 import Result from '../components/Result';
 import bffClient from '../apis/bffClient';
+import './home.css';
 
 export default class Home extends Component {  
   constructor(props) {
@@ -38,7 +39,7 @@ export default class Home extends Component {
     return (
       <div>
         <Header/>
-        <Container>
+        <Container className="main_component">
           <Row>
             <Col xs={3}></Col>
             <Col xs={6}>
