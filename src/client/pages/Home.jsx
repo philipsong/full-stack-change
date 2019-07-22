@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import { Button, Form, Container, Col, Row } from 'react-bootstrap';
+import Header from './components/Header';
+import Result from './components/Result';
+import bffClient from '../apis/bffClient';
 
 export default class Home extends Component {  
   constructor(props) {
@@ -20,8 +23,7 @@ export default class Home extends Component {
 
   handleClick() {
     const { num } = this.state;
-    fetch(`/api/median-primes/${num}`)
-      .then(res => res.json())
+    bffClient.getPrimeNumbers(num)
       .then(res => {
         if (res.status.statusCd === '200') {
           this.setState({ medianPrimes: res.data });   
@@ -34,51 +36,25 @@ export default class Home extends Component {
   render() {
     const { medianPrimes , num, formValidated } = this.state;
     return (
-      <Container>
-        <Row style={{ height: '40px' }}>
-          <Col></Col>
-          <Col xs={6}></Col>
-          <Col></Col>
-        </Row>
-        <Row>
-          <Col xs={3}></Col>
-          <Col xs={6}><h2>TouchBistro Full Stack Challenge</h2></Col>
-          <Col xs={3}></Col>
-        </Row>
-        <Row>
-          <Col></Col>
-          <Col xs={6}><h4>Submitter: Philip Song</h4></Col>
-          <Col></Col>
-        </Row>
-        <Row style={{ height: '20px' }}>
-          <Col></Col>
-          <Col xs={6}></Col>
-          <Col></Col>
-        </Row>
-        <Row>
-          <Col></Col>
-          <Col xs={6}>
-            <Form>
-              <Form.Group controlId="upperLimit">
-                <Form.Label>Please Input Upper Limit n:</Form.Label>
-                <Form.Control type="number" onChange={ this.handleChange } />
-              </Form.Group>
-              <Button onClick={this.handleClick} disabled ={!formValidated} >Submit</Button>
-            </Form>
-          </Col>
-          <Col></Col>
-        </Row>
-        <Row style={{ height: '20px' }}>
-          <Col></Col>
-          <Col xs={6}></Col>
-          <Col></Col>
-        </Row>
-        <Row>
-          <Col></Col>
-          <Col xs={6}>{medianPrimes ? <span>{`Median Primes under ${num} : ${medianPrimes}`}</span> : <span>Median Primes will dispaly here!</span>}</Col>
-          <Col></Col>
-        </Row>
-      </Container>
+      <div>
+        <Header/>
+        <Container>
+          <Row>
+            <Col xs={3}></Col>
+            <Col xs={6}>
+              <Form>
+                <Form.Group controlId="upperLimit">
+                  <Form.Label>Please Input Upper Limit n:</Form.Label>
+                  <Form.Control type="number" onChange={ this.handleChange } />
+                </Form.Group>
+                <Button onClick={this.handleClick} disabled ={!formValidated} >Submit</Button>
+              </Form>
+            </Col>
+            <Col xs={3}></Col>
+          </Row>
+        </Container>
+        <Result num={num} medianPrimes={medianPrimes}/>
+      </div> 
     );
   }
 }
