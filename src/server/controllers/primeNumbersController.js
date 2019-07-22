@@ -19,7 +19,6 @@ module.exports.getMedianPrimesUnderN = async (req, res) => {
      
     res.json(resData);
   } catch(e) {
-    console.log(e);
     const errorData = {
       status: {
         statusCd: '400',

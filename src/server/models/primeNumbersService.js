@@ -8,10 +8,10 @@ const primeNumbers = (num = 0) => {
   return new Promise ((resolve, reject) => {
     const n = parseInt(num);
     if(isNaN(n)) {
-      reject('error: upper limit number is not an integer');
+      reject('upper limit number is not an integer');
     }
     if (n < 2) {
-      reject('error: upper limit number cannot less than 2');
+      reject('upper limit number cannot less than 2');
     }
   
     let numbersArr = [], resArr = [];
@@ -49,6 +49,9 @@ const primeNumbers = (num = 0) => {
  * @return {Array} array of medians
  */
 const mediansOfArray = (arr = []) => {
+  if (!Array.isArray(arr)) {
+    return 'The argument is not an array';
+  }
   if (arr.length <= 2) {
     return arr;
   }
