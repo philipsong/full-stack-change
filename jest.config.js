@@ -19,5 +19,8 @@ module.exports = {
     '/node_modules/',
     '/coverage/'
   ],
+  moduleNameMapper: {
+    '\\.(css|less|scss)$': '<rootDir>/client/mocks/styleMock.js'
+  },
   testMatch: ["**/__tests__/**/*.js?(x)"]
 };
