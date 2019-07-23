@@ -33,6 +33,6 @@ yarn unit (or npm run unit)
 yarn build (or npm run build)
 
 # Start production server
-yarn start (or npm start)
+yarn start (or npm run start)
 ```
 
